@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Newsletter envelope animation</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://code.jquery.com/jquery-3.6.2.min.js"
+        integrity="sha256-2krYZKh//PcchRtd+H+VyyQoZ/e3EcrkxhM8ycwASPA=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js"></script>
+    <script>
+        jQuery(window).on('load', function(){
+           var tl = gsap.timeline({repeat: 0, repeatDelay: 1});
+            tl.to(".envelop", {rotationY: 180, ease:"none", duration: 1, delay:1});
+            tl.to(".cover", {rotationX: 180, ease:"none", duration: 1, delay:1}).set($('.cover'), {css:{zIndex:2}});
+            tl.to("#letter",{yPercent:-70, ease:"none", duration:1}).set($('#letter'), {css:{zIndex:9}});
+            tl.to("#letter",{rotation:0, ease:"none", duration:1});
+            tl.add('start').to("#letter",{   ease:"none", duration:1},'start')
+            .to(".envelop", {rotationZ: 10, scale:.75, ease:"none", duration: 1},'start')
+            .to("#letter", {xPercent:100, yPercent:-10, rotationZ: -10, scale: 1.75, ease:"none", duration: 1},'start');
+        });
+
+
+
+
+    </script>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="scene">
+            <div class="envelop">
+                <div class="envelop__face envelop__face--back">
+                    <div class="cover">
+
+                    </div>
+                    <img id="bg" src="images/envelope-back-transparent.png" alt="">
+                    <img id="letter" src="images/letter.jpg" alt="">
+                </div>
+                <div class="envelop__face envelop__face--front">
+                    <img src="images/envelop-front.jpg" alt="">
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+</body>
+
+</html>
